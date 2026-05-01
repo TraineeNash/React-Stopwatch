@@ -1,0 +1,60 @@
+Perfect, Nasrul — now that you feel clearer on flags, `useState`, and `useRef`, we can move forward with the exercise I suggested earlier. The idea is to **practice extending your stopwatch** so you really understand how state and JSX work together.  
+
+Here’s how we can proceed step by step:
+
+---
+
+### 🧩 Exercise 1: Add Lap Times
+**Goal:** Add a “Lap” button that records the current stopwatch time into a list.
+
+1. **Add new state for laps:**
+   ```js
+   const [laps, setLaps] = useState([]);
+   ```
+
+2. **Create a function to add a lap:**
+   ```js
+   const lap = () => {
+     setLaps([...laps, time]); // push current time into laps array
+     console.log("Lap recorded:", time);
+   };
+   ```
+
+3. **Add a Lap button in JSX:**
+   ```jsx
+   <button
+     className="bg-blue-800 p-2 rounded-xl text-2xl font-bold text-white"
+     onClick={lap}
+   >
+     Lap
+   </button>
+   ```
+
+4. **Display laps below the stopwatch:**
+   ```jsx
+   <div className="mt-4">
+     {laps.map((lapTime, index) => (
+       <p key={index} className="text-xl font-mono">
+         Lap {index + 1}: {formatTime(lapTime)}
+       </p>
+     ))}
+   </div>
+   ```
+
+---
+
+### ✅ What you’ll see
+- Every time you press **Lap**, the current stopwatch time is stored in the `laps` array.  
+- The list of laps will appear below the timer.  
+- You’ll also see a debug log in the console: `"Lap recorded: 65"` etc.
+
+---
+
+### 🎯 Why this helps
+- You’ll practice adding **new state** (`laps`).  
+- You’ll see how arrays in state work (`setLaps([...laps, time])`).  
+- You’ll reinforce how JSX can loop over state with `.map()` to render multiple items.  
+
+---
+
+👉 My suggestion: try implementing this Lap feature yourself. Once you’ve done it, tell me what happens when you press **Lap** multiple times — and we’ll use that as the next checkpoint to test your understanding.
